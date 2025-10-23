@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include "arraylib.h"
+
+int main(void) {
+    int n, value;
+
+    printf("Enter the number of elements:");
+    if(scanf("%d", &n) != 1 || n<=0) {
+        printf("Invalid size!\n");
+        return 1;
+    }
+
+    int a[n];
+    printf("Enter %d elements:", n);
+    for (int i = 0; i<n; i++) {
+        if(scanf("%d", &a[i]) != 1) {
+            printf("Invalid input!\n");
+            return 1;
+        }
+    }
+
+    printf("\nOriginal array:");
+    displayArray(a, n);
+
+    printf("Max at index %d\n", findMaxIndex(a, n));
+    printf("Min at index %d\n", findMinIndex(a, n));
+    printf("Average = %.2f\n", findAverage(a, n));
+     
+    reverseArray(a,n);
+    printf("Reversed Array:");
+    displayArray(a,n);
+    
+    sortArray(a,n);
+    printf("Sorted Array:");
+    displayArray(a,n);
+    
+    printf("\n Enter a value to rearch:") ;
+    if (scanf("%d", &value) !=1) {
+        printf("Invalid input!\n");
+        return 1;
+    }
+
+    int pos = linearSearch(a ,n, value);
+    if(pos != -1)
+    printf("%d found at index %d\n", value, pos);
+    else 
+    printf("%d not found in array\n", value);
+
+    return 0;
+}
